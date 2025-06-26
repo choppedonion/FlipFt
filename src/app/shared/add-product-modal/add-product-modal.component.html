@@ -1,0 +1,16 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <h2>Ajouter un produit</h2>
+    <input [(ngModel)]="productName" placeholder="Nom du produit" />
+    <select [(ngModel)]="environnement">
+      <option value="VA">VA</option>
+      <option value="TIS">TIS</option>
+      <option value="VACPP">VACPP</option>
+    </select>
+
+    <div class="actions">
+      <button (click)="close()">Annuler</button>
+      <button (click)="submit()">Ajouter</button>
+    </div>
+  </div>
+</div>

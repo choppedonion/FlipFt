@@ -11,9 +11,17 @@
 
   <div class="products-grid">
     <a class="product-card" *ngFor="let product of filteredProducts()" [routerLink]="[product.id,'features']">
-      <div class="product-title">{{ product.name }}</div>
+      <div class="product-title">{{ product.nom }}</div>
     </a>
 
-    <button class="add-button">+</button>
+    <app-add-product-modal
+      *ngIf="showModal"
+      (cancel)="showModal = false"
+      (confirm)="onAddProduct($event)">
+    </app-add-product-modal>
+
+    <button class="add-button"
+            (click)="showModal = true"
+            [disabled]="!selectedEnv">+</button>
   </div>
 </div>

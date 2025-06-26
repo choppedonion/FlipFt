@@ -7,9 +7,9 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let team of teams">
-    <td>{{ team.name }}</td>
-    <td>{{ team.produits?.length || 0 }}</td>
+  <tr *ngFor="let team of produitsCountMap">
+    <td>{{ team.nom }}</td>
+    <td>{{ team.countProduct || 0 }}</td>
     <td>
       <button (click)="goToProducts(team.id)">Voir les produits</button>
     </td>

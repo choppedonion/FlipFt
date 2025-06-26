@@ -32,14 +32,11 @@ export class FeatureFlippingComponent {
 
   ngOnInit() {
     console.log('Team ID:', this.teamId);
-    this.teamDataService.getTeams().subscribe((data: Team[]) => {
+    this.teamDataService.getEquipes().subscribe((data: Team[]) => {
       const team = data.find(t => t.id === String(this.teamId));
       if (team) {
-        const product = team.produits.find(p => String(p.id) === this.productId);
-        if (product) {
-          this.features = product.features ?? [];
-          console.log('Features for product:', this.features);
-        }
+        //const product = team.produits.find(p => String(p.id) === this.productId);
+
       } else {
         console.warn('Team not found for ID:', this.teamId);
       }

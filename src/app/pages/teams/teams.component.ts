@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {TeamDataService} from "../../services/team-data.service";
 import {TeamTableComponent} from "../../components/team-table/team-table.component";
+import {Team} from "../../models/team.model";
 
 @Component({
   selector: 'app-teams',
@@ -12,13 +13,24 @@ import {TeamTableComponent} from "../../components/team-table/team-table.compone
   styleUrl: './teams.component.scss'
 })
 export class TeamsComponent {
-  teams: any[] = [];
+  teams: Team[] = [];
+  produitsCountMap: { id: string,  nom: string, countProduct: number }[] = [];
 
   constructor(private teamDataService: TeamDataService) {}
 
   ngOnInit() {
-    this.teamDataService.getTeams().subscribe((data) => {
+    this.teamDataService.getEquipes().subscribe((data) => {
       this.teams = data;
+
+      this.teams.forEach(team => {
+        this.teamDataService.getNombreProduitsByEquipeId(team.id).subscribe((count: number) => {
+          this.produitsCountMap.push({ id: team.id, nom: team.nom, countProduct: count });
+          console.log(`Team ID: ${team.id}, Products Count: ${count}`);
+        });
+      });
+
+
+      console.log('Teams data loaded:', this.teams);
     });
   }
 }

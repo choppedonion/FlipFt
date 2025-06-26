@@ -1,29 +1,20 @@
-interface Product {
-  id: number | string;
-  name: string;
-  features?: { key: string; value: boolean }[];
-  environnement?: string;
-}
-
-interface Team {
-  id: string;
-  name: string;
-  produits: Product[];
-}
-
+import {AddProductModalComponent} from "../../shared/add-product-modal/add-product-modal.component";
 import { Component } from '@angular/core';
-import { NgForOf } from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {TeamDataService} from "../../services/team-data.service";
 import { map } from 'rxjs/operators';
 import {Observable} from "rxjs";
+import {Product} from "../../models/Product.model";
 
 @Component({
   selector: 'app-products',
   standalone: true,
   imports: [
     NgForOf,
-    RouterLink
+    RouterLink,
+    AddProductModalComponent,
+    NgIf
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
@@ -32,6 +23,7 @@ export class ProductsComponent {
   teamId: string | null;
   products: Product[] = [];
   selectedEnv: string = 'VA';
+  showModal = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,13 +34,9 @@ export class ProductsComponent {
 
   ngOnInit() {
     console.log('Team ID:', this.teamId);
-    this.teamDataService.getTeams().subscribe((data: Team[]) => {
-      const team = data.find(t => t.id === String(this.teamId));
-      if (team) {
-        this.products = team.produits || [];
-      } else {
-        console.warn('Team not found for ID:', this.teamId);
-      }
+    this.teamDataService.getProduitsByEquipeId(String(this.teamId)).subscribe((data: Product[]) => {
+      this.products = data;
+      console.log('Products loaded:', this.products);
     });
   }
 
@@ -57,5 +45,21 @@ export class ProductsComponent {
       return this.products;
     }
     return this.products.filter(p => p.environnement === this.selectedEnv);
+  }
+
+  onAddProduct(data: { name: string, env: string }) {
+    const newProduct: Product = {
+      id: `p${Date.now()}`,
+      nom: data.name,
+      equipeId: String(this.teamId),
+      environnement: this.selectedEnv,
+      features: []
+    };
+    console.log('Adding new product:', newProduct);
+    console.log(this.teamDataService.addProductToTeam(String(this.teamId), newProduct))
+      this.products.push(newProduct);
+      console.log('Product added successfully:', newProduct);
+
+    this.showModal = false;
   }
 }
