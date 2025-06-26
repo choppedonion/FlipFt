@@ -31,7 +31,7 @@ export class TeamDataService {
 
   addProductToTeam(teamId: string, newProduct: Product): Observable<any> {
     console.log('Adding product to team:', newProduct);
-    return this.http.post<any[]>(this.produitsUrl, newProduct);
+    return this.http.post<any>(this.produitsUrl, newProduct);
   }
 
   getNombreProduitsByEquipeId(equipeId: string): Observable<number> {
