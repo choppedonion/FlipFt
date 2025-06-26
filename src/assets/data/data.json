@@ -4,34 +4,28 @@
     "name": "Équipe 1",
     "produits": [
       {
-        "id": "p4",
-        "name": "Produit A",
-        "environnement": "VA",
-        "features": [{ "name": "f1", "active": true }]
-      },
-      {
         "id": "p1",
         "name": "Produit A",
-        "environnement": "TIS",
-        "features": [{ "name": "f1", "active": true }]
+        "environnement": "VA",
+        "backendUrl": "http://localhost:8080/exp-rendezvoususager"
       },
       {
         "id": "p2",
-        "name": "Produit B",
+        "name": "Produit A",
         "environnement": "TIS",
-        "features": [
-          { "name": "f2", "active": true },
-          { "name": "f3", "active": false }
-        ]
+        "backendUrl": "https://backend-ex173-tis.dev.pe.fr"
       },
       {
         "id": "p3",
+        "name": "Produit B",
+        "environnement": "TIS",
+        "backendUrl": "https://backend-ex173b-tis.dev.pe.fr"
+      },
+      {
+        "id": "p4",
         "name": "Produit C",
         "environnement": "VACPP",
-        "features": [
-          { "name": "f4", "active": true },
-          { "name": "f5", "active": true }
-        ]
+        "backendUrl": "https://backend-ex173c-vacpp.dev.pe.fr"
       }
     ]
   },
@@ -40,13 +34,10 @@
     "name": "Équipe 2",
     "produits": [
       {
-        "id": "p4",
+        "id": "p5",
         "name": "Produit D",
         "environnement": "VA",
-        "features": [
-          { "name": "f6", "active": false },
-          { "name": "f7", "active": true }
-        ]
+        "backendUrl": "https://backend-ex174-va.dev.pe.fr"
       }
     ]
   },
@@ -55,22 +46,16 @@
     "name": "Équipe 3",
     "produits": [
       {
-        "id": "p5",
+        "id": "p6",
         "name": "Produit E",
         "environnement": "TIS",
-        "features": [
-          { "name": "f8", "active": true },
-          { "name": "f9", "active": false }
-        ]
+        "backendUrl": "https://backend-ex175-tis.dev.pe.fr"
       },
       {
-        "id": "p6",
+        "id": "p7",
         "name": "Produit F",
         "environnement": "VA",
-        "features": [
-          { "name": "f10", "active": true },
-          { "name": "f11", "active": true }
-        ]
+        "backendUrl": "https://backend-ex175-va.dev.pe.fr"
       }
     ]
   }

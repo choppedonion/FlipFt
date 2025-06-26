@@ -1,8 +1,9 @@
-import {Feature} from "./Feature.model";
+import { Feature } from './Feature.model';
 
 export interface Product {
-  id: number | string;
+  id: string;
   name: string;
+  environnement: string;
+  backendUrl: string;
   features?: Feature[];
-  environnement?: string;
 }
