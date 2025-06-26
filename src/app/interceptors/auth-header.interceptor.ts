@@ -5,6 +5,11 @@ export const authHeaderInterceptor: HttpInterceptorFn = (req, next) => {
 
   const modifiedReq = req.clone({
     setHeaders: {
+      "pe-nom-application":"FlipFt",
+      "pe-id-correlation":"45",
+      "pe-id-utilisateur":"test",
+      "TypeAuth":"/agent",
+      "Authorization": `Bearer ${token}`
     }
   });
 

@@ -1,61 +1,49 @@
 [
   {
     "id": "equipe1",
-    "name": "Équipe 1",
+    "name": "Dezosseurs",
     "produits": [
       {
         "id": "p1",
-        "name": "Produit A",
+        "name": "Conclusions Entretien",
         "environnement": "VA",
-        "backendUrl": "http://localhost:8080/exp-rendezvoususager"
+        "backendUrl": "/exp-rendezvoususager"
       },
       {
         "id": "p2",
-        "name": "Produit A",
-        "environnement": "TIS",
-        "backendUrl": "https://backend-ex173-tis.dev.pe.fr"
+        "name": "Rendez-vous Usager",
+        "environnement": "VA",
+        "backendUrl": "/exp-rendezvoususager"
       },
       {
         "id": "p3",
-        "name": "Produit B",
-        "environnement": "TIS",
-        "backendUrl": "https://backend-ex173b-tis.dev.pe.fr"
+        "name": "Conclusions Entretien",
+        "environnement": "VACPP",
+        "backendUrl": "/exp-rendezvoususager"
       },
       {
         "id": "p4",
-        "name": "Produit C",
+        "name": "Rendez-vous Usager",
         "environnement": "VACPP",
-        "backendUrl": "https://backend-ex173c-vacpp.dev.pe.fr"
+        "backendUrl": "/exp-rendezvoususager"
       }
     ]
   },
   {
     "id": "equipe2",
-    "name": "Équipe 2",
+    "name": "Da Schilti Code",
     "produits": [
       {
         "id": "p5",
-        "name": "Produit D",
-        "environnement": "VA",
-        "backendUrl": "https://backend-ex174-va.dev.pe.fr"
-      }
-    ]
-  },
-  {
-    "id": "equipe3",
-    "name": "Équipe 3",
-    "produits": [
-      {
-        "id": "p6",
-        "name": "Produit E",
-        "environnement": "TIS",
-        "backendUrl": "https://backend-ex175-tis.dev.pe.fr"
+        "name": "Prestations",
+        "environnement": "VACPP",
+        "backendUrl": "/prestations-api"
       },
       {
-        "id": "p7",
-        "name": "Produit F",
-        "environnement": "VA",
-        "backendUrl": "https://backend-ex175-va.dev.pe.fr"
+        "id": "p6",
+        "name": "Prestations",
+        "environnement": "TIS",
+        "backendUrl": "/prestations-api"
       }
     ]
   }
