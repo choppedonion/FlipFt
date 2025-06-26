@@ -1,0 +1,12 @@
+{
+  "/exp-rendezvoususager/v1": {
+    "target": "https://ex173-va.z2-preprod.k8s.pole-emploi.intra/",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/prestations-api/v1": {
+    "target": "https://ex157-prestations-vacpp.preprod01.k8s.pole-emploi.intra/",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

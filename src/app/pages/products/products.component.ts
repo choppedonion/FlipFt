@@ -41,25 +41,21 @@ export class ProductsComponent {
   }
 
   filteredProducts(): Product[] {
-    if (this.selectedEnv === 'ALL') {
-      return this.products;
-    }
+
     return this.products.filter(p => p.environnement === this.selectedEnv);
   }
 
-  onAddProduct(data: { name: string, env: string }) {
+  onAddProduct(data: { name: string, env: string, url: string }) {
     const newProduct: Product = {
       id: `p${Date.now()}`,
       nom: data.name,
       equipeId: String(this.teamId),
       environnement: this.selectedEnv,
-      features: []
+      backendUrl: data.url
     };
-    console.log('Adding new product:', newProduct);
-    console.log(this.teamDataService.addProductToTeam(String(this.teamId), newProduct))
-      this.products.push(newProduct);
-      console.log('Product added successfully:', newProduct);
 
+    this.teamDataService.addProductToTeam(String(this.teamId), newProduct)
+    this.products.push(newProduct);
     this.showModal = false;
   }
 }

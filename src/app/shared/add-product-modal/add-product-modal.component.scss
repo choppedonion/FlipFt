@@ -13,10 +13,33 @@
   padding: 2rem;
   border-radius: 8px;
   width: 300px;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    input, select {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid;
+    }
+  }
 }
 
 .actions {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
+  button {
+    background: #bebebe;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+
+    &.valid{
+      background: #007bff;
+      color: white;
+    }
+  }
 }

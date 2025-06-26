@@ -13,13 +13,14 @@ import {FormsModule} from "@angular/forms";
 export class AddProductModalComponent {
   productName = '';
   environnement = 'VA';
+  url = '';
 
   @Output() cancel = new EventEmitter<void>();
-  @Output() confirm = new EventEmitter<{ name: string, env: string }>();
+  @Output() confirm = new EventEmitter<{ name: string, env: string, url:string }>();
 
   submit() {
     if (this.productName.trim()) {
-      this.confirm.emit({ name: this.productName, env: this.environnement });
+      this.confirm.emit({ name: this.productName, env: this.environnement, url: this.url });
     }
   }
 

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "equipe1",
+    "name": "Dezosseurs",
+    "produits": [
+      {
+        "id": "p1",
+        "name": "Conclusions Entretien",
+        "environnement": "VA",
+        "backendUrl": "/exp-rendezvoususager"
+      },
+      {
+        "id": "p2",
+        "name": "Rendez-vous Usager",
+        "environnement": "VA",
+        "backendUrl": "/exp-rendezvoususager"
+      },
+      {
+        "id": "p3",
+        "name": "Conclusions Entretien",
+        "environnement": "VACPP",
+        "backendUrl": "/exp-rendezvoususager"
+      },
+      {
+        "id": "p4",
+        "name": "Rendez-vous Usager",
+        "environnement": "VACPP",
+        "backendUrl": "/exp-rendezvoususager"
+      }
+    ]
+  },
+  {
+    "id": "equipe2",
+    "name": "Da Schilti Code",
+    "produits": [
+      {
+        "id": "p5",
+        "name": "Prestations",
+        "environnement": "VACPP",
+        "backendUrl": "/prestations-api"
+      },
+      {
+        "id": "p6",
+        "name": "Prestations",
+        "environnement": "TIS",
+        "backendUrl": "/prestations-api"
+      }
+    ]
+  }
+]

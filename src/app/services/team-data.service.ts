@@ -21,6 +21,10 @@ export class TeamDataService {
     return this.http.get<any>(`${this.equipeUrl}/${id}`);
   }
 
+  getProduitsById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.produitsUrl}/${id}`);
+  }
+
   getProduitsByEquipeId(equipeId: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.produitsUrl}?equipeId=${equipeId}`);
   }

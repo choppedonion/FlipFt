@@ -1,82 +1,62 @@
 {
   "equipes": [
     {
-      "id": "equipe1",
-      "nom": "Équipe 1"
+      "id": "dezosseurs",
+      "nom": "Dezosseurs"
     },
     {
-      "id": "equipe2",
-      "nom": "Équipe 2"
+      "id": "daschilti-code",
+      "nom": "Da Schilti Code"
     },
     {
       "id": "equipe3",
       "nom": "Équipe 3"
     }
   ],
+
   "produits": [
     {
-      "id": "p4",
-      "nom": "Produit A",
-      "environnement": "VA",
-      "features": [{ "name": "f1", "active": true }],
-      "equipeId": "equipe1"
-    },
-    {
       "id": "p1",
-      "nom": "Produit A",
-      "environnement": "TIS",
-      "features": [{ "name": "f1", "active": true }],
-      "equipeId": "equipe1"
+      "nom": "Conclusions Entretien",
+      "environnement": "VA",
+      "backendUrl": "/exp-rendezvoususager",
+      "equipeId": "dezosseurs"
     },
     {
       "id": "p2",
-      "nom": "Produit B",
-      "environnement": "TIS",
-      "features": [
-        { "name": "f2", "active": true },
-        { "name": "f3", "active": false }
-      ],
-      "equipeId": "equipe1"
+      "nom": "Rendez-vous Usager",
+      "environnement": "VA",
+      "backendUrl": "/exp-rendezvoususager",
+      "equipeId": "dezosseurs"
     },
     {
       "id": "p3",
-      "nom": "Produit C",
+      "nom": "Conclusions Entretien",
       "environnement": "VACPP",
-      "features": [
-        { "name": "f4", "active": true },
-        { "name": "f5", "active": true }
-      ],
-      "equipeId": "equipe1"
+      "backendUrl": "/exp-rendezvoususager",
+      "equipeId": "dezosseurs"
     },
     {
       "id": "p4",
-      "nom": "Produit D",
-      "environnement": "VA",
-      "features": [
-        { "name": "f6", "active": false },
-        { "name": "f7", "active": true }
-      ],
-      "equipeId": "equipe2"
+      "nom": "Rendez-vous Usager",
+      "environnement": "VACPP",
+      "backendUrl": "/exp-rendezvoususager",
+      "equipeId": "dezosseurs"
     },
     {
       "id": "p5",
-      "nom": "Produit E",
-      "environnement": "TIS",
-      "features": [
-        { "name": "f8", "active": true },
-        { "name": "f9", "active": false }
-      ],
-      "equipeId": "equipe3"
+      "nom": "Prestations",
+      "environnement": "VACPP",
+      "backendUrl": "/prestations-api",
+      "equipeId": "daschilti-code"
     },
     {
       "id": "p6",
-      "nom": "Produit F",
-      "environnement": "VA",
-      "features": [
-        { "name": "f10", "active": true },
-        { "name": "f11", "active": true }
-      ],
-      "equipeId": "equipe3"
+      "nom": "Prestations",
+      "environnement": "TIS",
+      "backendUrl": "/prestations-api",
+      "equipeId": "daschilti-code"
     }
   ]
+
 }
