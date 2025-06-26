@@ -1,7 +1,7 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authHeaderInterceptor: HttpInterceptorFn = (req, next) => {
-  const token = "7167251a-6c3e-46a1-ad50-38c965d029ec";
+  const token = "4eddaff1-7de8-44af-95e6-753370257f2b";
 
   const modifiedReq = req.clone({
     setHeaders: {

@@ -10,7 +10,12 @@
   </div>
 
   <div class="products-grid">
-    <a class="product-card" *ngFor="let product of filteredProducts()" [routerLink]="[product.id,'features']">
+    <a
+      class="product-card"
+      *ngFor="let product of filteredProducts()"
+      [routerLink]="['/feature-flipping']"
+      [queryParams]="{ idTeam: teamId, idProduct: product.id }"
+    >
       <div class="product-title">{{ product.name }}</div>
     </a>
 

@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TeamDataService } from '../../services/team-data.service';
+import { FeatureFlippingApiService } from '../../services/feature-flipping-api.service';
+import { FeatureOverrideService } from '../../services/feature-override.service';
 
 import { Team } from '../../models/team.model';
 import { Product } from '../../models/Product.model';
 import { Feature } from '../../models/Feature.model';
 import { TeamTableComponent } from '../../components/team-table/team-table.component';
 import { FeatureTableComponent } from '../../components/feature-table/feature-table.component';
-import {FeatureFlippingApiService} from "../../services/feature-flipping-api.service";
 
 @Component({
   selector: 'app-feature-flipping',
@@ -19,9 +20,11 @@ import {FeatureFlippingApiService} from "../../services/feature-flipping-api.ser
   styleUrls: ['./feature-flipping.component.scss'],
 })
 export class FeatureFlippingComponent implements OnInit {
-  teamId: string | null;
-  productId: string | null;
-  product: Product | undefined;
+  teamId: string | null = null;
+  productId: string | null = null;
+  mode: 'server' | 'local' = 'server';
+
+  product?: Product;
   features: Feature[] = [];
   loading = false;
   errorMessage = '';
@@ -29,34 +32,49 @@ export class FeatureFlippingComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private teamDataService: TeamDataService,
-    private featureApiService: FeatureFlippingApiService
-  ) {
-    this.teamId = this.route.snapshot.paramMap.get('idTeam');
-    this.productId = this.route.snapshot.paramMap.get('idProduct');
-  }
+    private featureApiService: FeatureFlippingApiService,
+    private overrideService: FeatureOverrideService // Service LocalStorage
+  ) {}
 
   ngOnInit(): void {
-    console.log('Team ID:', this.teamId, 'Product ID:', this.productId);
+    this.route.queryParams.subscribe(params => {
+      this.teamId = params['idTeam'];
+      this.productId = params['idProduct'];
+      this.mode = params['mode'] === 'local' ? 'local' : 'server';
+
+      console.log('Mode:', this.mode, 'Team:', this.teamId, 'Product:', this.productId);
+
+      if (this.teamId && this.productId) {
+        this.loadProductAndFeatures();
+      } else {
+        this.errorMessage = 'Paramètres manquants (idTeam, idProduct)';
+      }
+    });
+  }
+
+  loadProductAndFeatures(): void {
     this.teamDataService.getTeams().subscribe({
       next: (teams: Team[]) => {
-        const team = teams.find(t => t.id === String(this.teamId));
-        if (team) {
-          this.product = team.produits.find(p => String(p.id) === this.productId);
-          if (this.product) {
-            console.log('Product found:', this.product);
-            this.loadFeaturesFromBackend(this.product.backendUrl);
-          } else {
-            console.warn('Produit non trouvé pour ID:', this.productId);
-            this.errorMessage = 'Produit non trouvé.';
-          }
-        } else {
-          console.warn('Équipe non trouvée pour ID:', this.teamId);
-          this.errorMessage = 'Équipe non trouvée.';
+        const team = teams.find(t => t.id === this.teamId);
+        if (!team) {
+          this.errorMessage = `Équipe non trouvée pour l'ID ${this.teamId}`;
+          return;
         }
+
+        this.product = team.produits.find(p => String(p.id) === this.productId);
+        if (!this.product) {
+          this.errorMessage = `Produit non trouvé pour l'ID ${this.productId}`;
+          return;
+        }
+
+        console.log('Produit trouvé:', this.product);
+
+        this.loadFeaturesFromBackend(this.product.backendUrl);
+
       },
       error: (error) => {
-        console.error('Erreur lors du chargement des équipes :', error);
-        this.errorMessage = 'Erreur de chargement des données.';
+        console.error('Erreur chargement équipes:', error);
+        this.errorMessage = 'Erreur lors du chargement des équipes.';
       }
     });
   }
@@ -65,19 +83,32 @@ export class FeatureFlippingComponent implements OnInit {
     this.loading = true;
     this.featureApiService.getFeaturesForProduct(backendUrl).subscribe({
       next: (response) => {
-        console.log(response)
         this.features = Object.entries(response).map(([name, active]) => ({
           name,
           active
         }));
-        console.log('Features chargés depuis backend:', this.features);
         this.loading = false;
       },
       error: (error) => {
-        console.error('Erreur lors de la récupération des features:', error);
-        this.errorMessage = 'Erreur lors de la récupération des features.';
+        console.error('Erreur GET backend:', error);
+        this.errorMessage = 'Erreur backend.';
         this.loading = false;
       }
     });
+  }
+
+  onToggleFeature(event: { name: string; active: boolean }): void {
+    if (!this.product) return;
+
+    const payload = {
+      [event.name]: event.active
+    };
+
+    console.log('PUT triggered for:', payload);
+
+    this.featureApiService.updateFeaturesForProduct(this.product.backendUrl, payload).subscribe({
+      next: () => console.log(`Feature ${event.name} updated.`),
+      error: (error) => console.error('PUT error:', error)
+  });
   }
 }
