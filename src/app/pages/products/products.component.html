@@ -1,11 +1,18 @@
-<div class="home-container">
+<div class="products">
   <h2>Produit</h2>
 
+  <div class="tabs">
+    <button *ngFor="let env of ['VA', 'TIS', 'VACPP']"
+            (click)="selectedEnv = env"
+            [class.active]="selectedEnv === env">
+      {{ env }}
+    </button>
+  </div>
+
   <div class="products-grid">
-    <div class="product-card" *ngFor="let product of products">
+    <a class="product-card" *ngFor="let product of filteredProducts()" [routerLink]="[product.id,'features']">
       <div class="product-title">{{ product.name }}</div>
-      <div class="product-id">{{ product.id }}</div>
-    </div>
+    </a>
 
     <button class="add-button">+</button>
   </div>

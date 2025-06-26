@@ -1,0 +1,21 @@
+<table>
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Activation</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let feature of features">
+    <td>{{ feature.name }}</td>
+    <td>{{ feature.activationDate || "" }}</td>
+    <td>
+      <label class="switch">
+        <input type="checkbox" [ngModel]="feature.active"/>
+        <span class="slider round"></span>
+      </label>
+    </td>
+  </tr>
+  </tbody>
+</table>

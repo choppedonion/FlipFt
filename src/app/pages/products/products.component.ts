@@ -2,6 +2,7 @@ interface Product {
   id: number | string;
   name: string;
   features?: { key: string; value: boolean }[];
+  environnement?: string;
 }
 
 interface Team {
@@ -12,7 +13,7 @@ interface Team {
 
 import { Component } from '@angular/core';
 import { NgForOf } from "@angular/common";
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import {TeamDataService} from "../../services/team-data.service";
 import { map } from 'rxjs/operators';
 import {Observable} from "rxjs";
@@ -20,15 +21,17 @@ import {Observable} from "rxjs";
 @Component({
   selector: 'app-products',
   standalone: true,
-    imports: [
-        NgForOf
-    ],
+  imports: [
+    NgForOf,
+    RouterLink
+  ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent {
   teamId: string | null;
   products: Product[] = [];
+  selectedEnv: string = 'VA';
 
   constructor(
     private route: ActivatedRoute,
@@ -47,5 +50,12 @@ export class ProductsComponent {
         console.warn('Team not found for ID:', this.teamId);
       }
     });
+  }
+
+  filteredProducts(): Product[] {
+    if (this.selectedEnv === 'ALL') {
+      return this.products;
+    }
+    return this.products.filter(p => p.environnement === this.selectedEnv);
   }
 }

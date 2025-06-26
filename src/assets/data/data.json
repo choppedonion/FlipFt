@@ -4,20 +4,74 @@
     "name": "Équipe 1",
     "produits": [
       {
+        "id": "p4",
+        "name": "Produit A",
+        "environnement": "VA",
+        "features": [{ "name": "f1", "active": true }]
+      },
+      {
         "id": "p1",
         "name": "Produit A",
-        "features": [{ "key": "f1", "value": true }]
+        "environnement": "TIS",
+        "features": [{ "name": "f1", "active": true }]
+      },
+      {
+        "id": "p2",
+        "name": "Produit B",
+        "environnement": "TIS",
+        "features": [
+          { "name": "f2", "active": true },
+          { "name": "f3", "active": false }
+        ]
+      },
+      {
+        "id": "p3",
+        "name": "Produit C",
+        "environnement": "VACPP",
+        "features": [
+          { "name": "f4", "active": true },
+          { "name": "f5", "active": true }
+        ]
       }
     ]
   },
   {
     "id": "equipe2",
     "name": "Équipe 2",
-    "produits": []
+    "produits": [
+      {
+        "id": "p4",
+        "name": "Produit D",
+        "environnement": "VA",
+        "features": [
+          { "name": "f6", "active": false },
+          { "name": "f7", "active": true }
+        ]
+      }
+    ]
   },
   {
     "id": "equipe3",
     "name": "Équipe 3",
-    "produits": []
+    "produits": [
+      {
+        "id": "p5",
+        "name": "Produit E",
+        "environnement": "TIS",
+        "features": [
+          { "name": "f8", "active": true },
+          { "name": "f9", "active": false }
+        ]
+      },
+      {
+        "id": "p6",
+        "name": "Produit F",
+        "environnement": "VA",
+        "features": [
+          { "name": "f10", "active": true },
+          { "name": "f11", "active": true }
+        ]
+      }
+    ]
   }
 ]
