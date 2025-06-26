@@ -1,0 +1,23 @@
+[
+  {
+    "id": "equipe1",
+    "name": "Équipe 1",
+    "produits": [
+      {
+        "id": "p1",
+        "name": "Produit A",
+        "features": [{ "key": "f1", "value": true }]
+      }
+    ]
+  },
+  {
+    "id": "equipe2",
+    "name": "Équipe 2",
+    "produits": []
+  },
+  {
+    "id": "equipe3",
+    "name": "Équipe 3",
+    "produits": []
+  }
+]

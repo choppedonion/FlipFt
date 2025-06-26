@@ -1,0 +1,18 @@
+<table>
+  <thead>
+  <tr>
+    <th>Nom de l'équipe</th>
+    <th>Nombre de produits</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let team of teams">
+    <td>{{ team.name }}</td>
+    <td>{{ team.produits?.length || 0 }}</td>
+    <td>
+      <button (click)="goToProducts(team.id)">Voir les produits</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
