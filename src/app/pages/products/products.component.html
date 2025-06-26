@@ -1,0 +1,32 @@
+<div class="products">
+  <h2>Produit</h2>
+
+  <div class="tabs">
+    <button *ngFor="let env of ['VA', 'TIS', 'VACPP']"
+            (click)="selectedEnv = env"
+            [class.active]="selectedEnv === env">
+      {{ env }}
+    </button>
+  </div>
+
+  <div class="products-grid">
+    <a
+      class="product-card"
+      *ngFor="let product of filteredProducts()"
+      [routerLink]="['/feature-flipping']"
+      [queryParams]="{ idTeam: teamId, idProduct: product.id }"
+    >
+      <div class="product-title">{{ product.nom }}</div>
+    </a>
+
+    <app-add-product-modal
+      *ngIf="showModal"
+      (cancel)="showModal = false"
+      (confirm)="onAddProduct($event)">
+    </app-add-product-modal>
+
+    <button class="add-button"
+            (click)="showModal = true"
+            [disabled]="!selectedEnv">+</button>
+  </div>
+</div>

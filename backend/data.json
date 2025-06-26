@@ -1,0 +1,62 @@
+{
+  "equipes": [
+    {
+      "id": "dezosseurs",
+      "nom": "Dezosseurs"
+    },
+    {
+      "id": "daschilti-code",
+      "nom": "Da Schilti Code"
+    },
+    {
+      "id": "equipe3",
+      "nom": "Équipe 3"
+    }
+  ],
+
+  "produits": [
+    {
+      "id": "p1",
+      "nom": "Conclusions Entretien",
+      "environnement": "VA",
+      "backendUrl": "/exp-rendezvoususager",
+      "equipeId": "dezosseurs"
+    },
+    {
+      "id": "p2",
+      "nom": "Rendez-vous Usager",
+      "environnement": "VA",
+      "backendUrl": "/exp-rendezvoususager",
+      "equipeId": "dezosseurs"
+    },
+    {
+      "id": "p3",
+      "nom": "Conclusions Entretien",
+      "environnement": "VACPP",
+      "backendUrl": "/exp-rendezvoususager",
+      "equipeId": "dezosseurs"
+    },
+    {
+      "id": "p4",
+      "nom": "Rendez-vous Usager",
+      "environnement": "VACPP",
+      "backendUrl": "/exp-rendezvoususager",
+      "equipeId": "dezosseurs"
+    },
+    {
+      "id": "p5",
+      "nom": "Prestations",
+      "environnement": "VACPP",
+      "backendUrl": "/prestations-api",
+      "equipeId": "daschilti-code"
+    },
+    {
+      "id": "p6",
+      "nom": "Prestations",
+      "environnement": "TIS",
+      "backendUrl": "/prestations-api",
+      "equipeId": "daschilti-code"
+    }
+  ]
+
+}

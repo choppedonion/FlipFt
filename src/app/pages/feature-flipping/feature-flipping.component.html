@@ -1,25 +1,8 @@
 <div class="feature-flipping-container">
   <h2>Feature Flipping</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Activation</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let feature of features">
-        <td>{{ feature.name }}</td>
-        <td>{{ feature.activationDate || "xx/xx/xxxx" }}</td>
-        <td>
-          <label class="switch">
-            <input type="checkbox" [(ngModel)]="feature.active" />
-            <span class="slider round"></span>
-          </label>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <app-feature-table
+    [features]="features"
+    (toggleFeature)="onToggleFeature($event)"
+  ></app-feature-table>
 </div>

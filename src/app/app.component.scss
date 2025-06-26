@@ -1,0 +1,17 @@
+.app-container {
+  display: flex;
+  height: calc(100vh - 30px);
+  width: calc(100% - 30px);
+  background-color: #F2F5FE;
+  align-items: center;
+  font-family: Inter, sans-serif;
+  padding: 15px;
+  .main-content {
+    margin-left: 20px;
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+    height: calc(100% - 40px);
+    border-radius: 25px;
+  }
+}

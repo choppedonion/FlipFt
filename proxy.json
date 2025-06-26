@@ -1,0 +1,12 @@
+{
+  "/exp-rendezvoususager/v1": {
+    "target": "http://localhost:8080/",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/prestations-api/v1": {
+    "target": "https://ex157-prestations-vacpp.preprod01.k8s.pole-emploi.intra/",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
